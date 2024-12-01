@@ -1,9 +1,8 @@
-// Define penalties
 const PENALTY = {
     MATCH: 0,
     MISMATCH: {
-        SIMILAR: 1, // Consonant/Consonant or Vowel/Vowel mismatch
-        DISSIMILAR: 3 // Vowel/Consonant mismatch
+        SIMILAR: 1,
+        DISSIMILAR: 3
     },
     GAP: 2
 };
@@ -12,7 +11,6 @@ const PENALTY = {
 const isVowel = char => "aeiou".includes(char.toLowerCase());
 const isConsonant = char => char.match(/[a-z]/i) && !isVowel(char);
 
-// Dynamic programming function to calculate alignment penalty
 function calculatePenalty(word1, word2) {
     const m = word1.length;
     const n = word2.length;
@@ -50,7 +48,6 @@ function calculatePenalty(word1, word2) {
     return dp[m][n];
 }
 
-// Main function for spell checking
 async function spellCheck(inputWord) {
     // Load dictionary from dictionary.txt
     const response = await fetch("dictionary.txt");
